@@ -13,3 +13,8 @@ spring:
     password: password
   h2:
     console.enabled: true
+<<<<<<< HEAD
+=======
+    
+
+>>>>>>> 2743ffac38ca385b314376af09b029da0582cdfa

@@ -1,0 +1,17 @@
+C:\Users\Juicebox\Documents\GitHub\All-About-Me-Back-End\src\main\java\com\revature\repositories\UserRepository.java
+C:\Users\Juicebox\Documents\GitHub\All-About-Me-Back-End\src\main\java\com\revature\services\UserService.java
+C:\Users\Juicebox\Documents\GitHub\All-About-Me-Back-End\src\main\java\com\revature\models\Post.java
+C:\Users\Juicebox\Documents\GitHub\All-About-Me-Back-End\src\main\java\com\revature\models\User.java
+C:\Users\Juicebox\Documents\GitHub\All-About-Me-Back-End\src\main\java\com\revature\annotations\AuthRestriction.java
+C:\Users\Juicebox\Documents\GitHub\All-About-Me-Back-End\src\main\java\com\revature\annotations\Authorized.java
+C:\Users\Juicebox\Documents\GitHub\All-About-Me-Back-End\src\main\java\com\revature\controllers\AuthController.java
+C:\Users\Juicebox\Documents\GitHub\All-About-Me-Back-End\src\main\java\com\revature\exceptions\NotLoggedInException.java
+C:\Users\Juicebox\Documents\GitHub\All-About-Me-Back-End\src\main\java\com\revature\services\PostService.java
+C:\Users\Juicebox\Documents\GitHub\All-About-Me-Back-End\src\main\java\com\revature\dtos\RegisterRequest.java
+C:\Users\Juicebox\Documents\GitHub\All-About-Me-Back-End\src\main\java\com\revature\controllers\PostController.java
+C:\Users\Juicebox\Documents\GitHub\All-About-Me-Back-End\src\main\java\com\revature\services\AuthService.java
+C:\Users\Juicebox\Documents\GitHub\All-About-Me-Back-End\src\main\java\com\revature\repositories\PostRepository.java
+C:\Users\Juicebox\Documents\GitHub\All-About-Me-Back-End\src\main\java\com\revature\advice\AuthAspect.java
+C:\Users\Juicebox\Documents\GitHub\All-About-Me-Back-End\src\main\java\com\revature\advice\RestExceptionHandler.java
+C:\Users\Juicebox\Documents\GitHub\All-About-Me-Back-End\src\main\java\com\revature\dtos\LoginRequest.java
+C:\Users\Juicebox\Documents\GitHub\All-About-Me-Back-End\src\main\java\com\revature\SocialMediaApplication.java

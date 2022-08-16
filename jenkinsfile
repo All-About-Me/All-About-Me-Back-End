@@ -22,7 +22,7 @@ pipeline {
         }
         stage('DockerBuild') {
       steps {
-        sh 'sudo docker build -t aam/socialmedia:latest .'
+        sh 'docker build -t aam/socialmedia:latest .'
       }
         }
          

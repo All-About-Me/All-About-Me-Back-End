@@ -20,4 +20,21 @@ public class User {
     private String password;
     private String firstName;
     private String lastName;
+    
+    private String phoneNumber;
+    private String address;
+    private String gender;
+    //private int age;
+    private String aboutMe;
+    
+	public User(int id, String email, String password, String firstName, String lastName) {
+		super();
+		this.id = id;
+		this.email = email;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+    
+    
 }

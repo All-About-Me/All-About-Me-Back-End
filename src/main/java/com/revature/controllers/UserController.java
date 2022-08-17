@@ -31,6 +31,10 @@ public class UserController {
     	u.setEmail(user.getEmail());
     	u.setFirstName(user.getFirstName());
     	u.setLastName(user.getLastName());
+    	u.setAddress(user.getAddress());
+    	u.setPhoneNumber(user.getPhoneNumber());
+    	u.setGender(user.getGender());
+    	u.setAboutMe(user.getAboutMe());
     	User updatedUser = userService.save(u);
     	return ResponseEntity.ok().body(updatedUser);
     	

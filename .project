@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
+<<<<<<< HEAD
+	<name>social-media</name>
+=======
 	<name>All-About-Me-Back-End</name>
+>>>>>>> 2743ffac38ca385b314376af09b029da0582cdfa
 	<comment></comment>
 	<projects>
 	</projects>
@@ -11,10 +15,23 @@
 			</arguments>
 		</buildCommand>
 		<buildCommand>
+			<name>org.springframework.ide.eclipse.boot.validation.springbootbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
 			<name>org.eclipse.m2e.core.maven2Builder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
+<<<<<<< HEAD
+		<buildCommand>
+			<name>org.springframework.ide.eclipse.boot.validation.springbootbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+=======
+>>>>>>> 2743ffac38ca385b314376af09b029da0582cdfa
 	</buildSpec>
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>

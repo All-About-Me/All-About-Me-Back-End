@@ -5,6 +5,8 @@ import com.revature.dtos.RegisterRequest;
 import com.revature.dtos.SearchRequest;
 import com.revature.models.User;
 import com.revature.services.AuthService;
+import com.revature.services.UserService;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,9 +20,11 @@ import java.util.Optional;
 public class AuthController {
 
     private final AuthService authService;
+    private final UserService userService;
 
-    public AuthController(AuthService authService) {
+    public AuthController(AuthService authService, UserService userService) {
         this.authService = authService;
+        this.userService = userService;
     }
 
     @PostMapping("/login")
@@ -65,6 +69,15 @@ public class AuthController {
     public Optional<User> searchLastName(@PathVariable String lastName){
     	System.out.println(authService.findByfirstName(lastName)); //cookie tracing
     return authService.findBylastName(lastName);
+    }
+    
+    @PutMapping("/resetPwd")
+    public  ResponseEntity<User> resetPassword(@RequestBody User user, HttpSession session){
+    	User u = (User) session.getAttribute("user");
+    	u.setPassword(user.getPassword());
+    	User updatedUser = userService.save(u);
+    	return ResponseEntity.ok().body(updatedUser);
+    	
     }
  }
 

@@ -2,6 +2,7 @@ package com.revature.controllers;
 
 import com.revature.dtos.LoginRequest;
 import com.revature.dtos.RegisterRequest;
+import com.revature.dtos.SearchRequest;
 import com.revature.models.User;
 import com.revature.services.AuthService;
 import org.springframework.http.HttpStatus;
@@ -53,5 +54,21 @@ public class AuthController {
         return ResponseEntity.status(HttpStatus.CREATED).body(authService.register(created));
     }
     
+
+    @GetMapping("/users/{firstName}") //mapping for search function
+    public Optional<User> search(@PathVariable String firstName){
+    	System.out.println(authService.findByfirstName(firstName)); //cookie tracing
+    return authService.findByfirstName(firstName);
+    }
     
-}
+    @GetMapping("/users/name/{lastName}") //mapping for search function
+    public Optional<User> searchLastName(@PathVariable String lastName){
+    	System.out.println(authService.findByfirstName(lastName)); //cookie tracing
+    return authService.findBylastName(lastName);
+    }
+ }
+
+
+    
+
+

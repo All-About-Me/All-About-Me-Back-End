@@ -22,4 +22,10 @@ public class UserService {
     public User save(User user) {
         return userRepository.save(user);
     }
+    public Optional<User> findByfirstName(String firstName) {
+        return userRepository.findByfirstName(firstName); //custom search based on users first name
+    }
+    public Optional<User> findBylasttName(String lastName) {
+        return userRepository.findBylastName(lastName); //custom search based on users first name
+    }
 }

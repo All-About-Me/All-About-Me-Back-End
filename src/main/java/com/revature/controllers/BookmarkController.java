@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +20,7 @@ import com.revature.services.UserService;
 
 @RestController
 @RequestMapping("/bookmarks")
+@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
 public class BookmarkController {
 	public final UserService userService;
 	
@@ -32,12 +35,14 @@ public class BookmarkController {
 	public ResponseEntity<Bookmark> bookmarkPost(@RequestBody User user, @RequestBody Post post){
 		Bookmark bookmark= userService.bookmarkPost(user, post);
 		return new ResponseEntity<>(bookmark, HttpStatus.CREATED);
+		
 	}
 
 	@GetMapping
 	public ResponseEntity<List<Bookmark>> retrieveBookmarks(@RequestBody User user){
+		System.out.println(user);
 		List<Bookmark> bookmarks=userService.retrieveBookmarks(user);
-		return new ResponseEntity<>(bookmarks, HttpStatus.OK);
+		return ResponseEntity.ok().body(bookmarks);
 	}
 	
 	@DeleteMapping

@@ -54,6 +54,7 @@ public class AuthController {
         return ResponseEntity.status(HttpStatus.CREATED).body(authService.register(created));
     }
     
+
     @GetMapping("/users/{firstName}") //mapping for search function
     public Optional<User> search(@PathVariable String firstName){
     	System.out.println(authService.findByfirstName(firstName)); //cookie tracing
@@ -66,4 +67,8 @@ public class AuthController {
     return authService.findBylastName(lastName);
     }
  }
+
+
+    
+
 

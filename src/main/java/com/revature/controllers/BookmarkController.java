@@ -28,19 +28,19 @@ public class BookmarkController {
 
 
 
-	@PostMapping("/add")
+	@PostMapping
 	public ResponseEntity<Bookmark> bookmarkPost(@RequestBody User user, @RequestBody Post post){
 		Bookmark bookmark= userService.bookmarkPost(user, post);
 		return new ResponseEntity<>(bookmark, HttpStatus.CREATED);
 	}
 
-	@GetMapping("/getbookmarks")
+	@GetMapping
 	public ResponseEntity<List<Bookmark>> retrieveBookmarks(@RequestBody User user){
 		List<Bookmark> bookmarks=userService.retrieveBookmarks(user);
 		return new ResponseEntity<>(bookmarks, HttpStatus.OK);
 	}
 	
-	@DeleteMapping("/removeBookmark")
+	@DeleteMapping
 	public ResponseEntity<?> removeBookmark(@RequestBody Bookmark bookmark){
 		userService.removeBookmark(bookmark);
 		return new ResponseEntity<>(HttpStatus.ACCEPTED);

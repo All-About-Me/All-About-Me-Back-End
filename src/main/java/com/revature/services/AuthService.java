@@ -28,6 +28,6 @@ public class AuthService {
     }
     
     public Optional<User> findBylastName(String lastName) {
-        return userService.findByfirstName(lastName);
+        return userService.findBylastName(lastName);
     }
 }

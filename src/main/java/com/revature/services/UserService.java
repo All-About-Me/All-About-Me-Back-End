@@ -40,11 +40,11 @@ public class UserService {
     }
     
     public List<Bookmark> retrieveBookmarks(User user){
-    	return bookmarkRepository.findByUserId(user);
+    	return bookmarkRepository.findByUser(user);
     }
     
-    public Bookmark bookmarkPost(User user, Post post) {
-    	Bookmark bookmark= new Bookmark(post, user);
+    public Bookmark bookmarkPost(Bookmark bookmark) {
+//    	Bookmark bookmark= new Bookmark(post, user);
     	return bookmarkRepository.save(bookmark);
     }
     

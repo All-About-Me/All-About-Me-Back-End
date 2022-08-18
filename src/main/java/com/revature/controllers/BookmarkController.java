@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,15 +33,15 @@ public class BookmarkController {
 
 
 	@PostMapping
-	public ResponseEntity<Bookmark> bookmarkPost(@RequestBody User user, @RequestBody Post post){
-		Bookmark bookmark= userService.bookmarkPost(user, post);
+	public ResponseEntity<Bookmark> bookmarkPost(@RequestBody Bookmark bodyBookmark){
+		System.out.println(bodyBookmark);
+		Bookmark bookmark= userService.bookmarkPost(bodyBookmark);
 		return new ResponseEntity<>(bookmark, HttpStatus.CREATED);
 		
 	}
 
-	@GetMapping
+	@PutMapping
 	public ResponseEntity<List<Bookmark>> retrieveBookmarks(@RequestBody User user){
-		System.out.println(user);
 		List<Bookmark> bookmarks=userService.retrieveBookmarks(user);
 		return ResponseEntity.ok().body(bookmarks);
 	}

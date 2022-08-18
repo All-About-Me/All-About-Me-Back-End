@@ -23,15 +23,15 @@ public class Bookmark {
     private Integer id;
 	
 	@ManyToOne
-	public Post postId;
+	public Post post;
 	
 	@ManyToOne
-	public User userId;
+	public User user;
 
-	public Bookmark(Post postId, User userId) {
+	public Bookmark(Post post, User user) {
 		super();
-		this.postId = postId;
-		this.userId = userId;
+		this.post = post;
+		this.user = user;
 	}
 	
 	

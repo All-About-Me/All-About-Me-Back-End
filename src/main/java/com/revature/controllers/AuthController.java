@@ -1,5 +1,6 @@
 package com.revature.controllers;
 
+import com.revature.annotations.Authorized;
 import com.revature.dtos.LoginRequest;
 import com.revature.dtos.RegisterRequest;
 import com.revature.dtos.SearchRequest;
@@ -58,7 +59,7 @@ public class AuthController {
         return ResponseEntity.status(HttpStatus.CREATED).body(authService.register(created));
     }
     
-
+    @Authorized
     @GetMapping("/users/{firstName}") //mapping for search function
     public Optional<User> search(@PathVariable String firstName){
     	System.out.println(authService.findByfirstName(firstName)); //cookie tracing
@@ -67,7 +68,7 @@ public class AuthController {
     
     @GetMapping("/users/name/{lastName}") //mapping for search function
     public Optional<User> searchLastName(@PathVariable String lastName){
-    	System.out.println(authService.findByfirstName(lastName)); //cookie tracing
+    	System.out.println(authService.findBylastName(lastName)); //cookie tracing
     return authService.findBylastName(lastName);
     }
     

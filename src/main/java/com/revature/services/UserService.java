@@ -35,21 +35,23 @@ public class UserService {
     public Optional<User> findByfirstName(String firstName) {
         return userRepository.findByfirstName(firstName); //custom search based on users first name
     }
-    public Optional<User> findBylasttName(String lastName) {
+    public Optional<User> findBylastName(String lastName) {
         return userRepository.findBylastName(lastName); //custom search based on users first name
     }
     
     public List<Bookmark> retrieveBookmarks(User user){
-    	return bookmarkRepository.findByUserId(user);
+    	return bookmarkRepository.findByUser(user);
     }
     
-    public Bookmark bookmarkPost(User user, Post post) {
-    	Bookmark bookmark= new Bookmark(post, user);
+    public Bookmark bookmarkPost(Bookmark bookmark) {
+//    	Bookmark bookmark= new Bookmark(post, user);
     	return bookmarkRepository.save(bookmark);
     }
     
     public void removeBookmark(Bookmark bookmark) {
-    	bookmarkRepository.delete(bookmark);
+    	Bookmark bookmarkToDelete=bookmarkRepository.findByUserAndPost(bookmark.getUser(), bookmark.getPost());
+    	System.out.println(bookmarkToDelete);
+    	bookmarkRepository.delete(bookmarkToDelete);
     	//TODO add delete confirmation 
 
     }

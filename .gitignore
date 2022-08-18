@@ -13,6 +13,8 @@ local.properties
 .settings/
 .loadpath
 .recommenders
+/target
+target/
 
 # External tool builders
 .externalToolBuilders/
@@ -69,3 +71,6 @@ local.properties
 .idea/
 
 # End of https://www.toptal.com/developers/gitignore/api/eclipse
+
+# Michael Eldredge's contribution
+**.class

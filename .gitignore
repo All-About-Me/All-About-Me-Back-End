@@ -15,6 +15,7 @@ local.properties
 .recommenders
 /target
 target/
+.factorypath
 
 # External tool builders
 .externalToolBuilders/

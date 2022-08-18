@@ -49,7 +49,9 @@ public class UserService {
     }
     
     public void removeBookmark(Bookmark bookmark) {
-    	bookmarkRepository.delete(bookmark);
+    	Bookmark bookmarkToDelete=bookmarkRepository.findByUserAndPost(bookmark.getUser(), bookmark.getPost());
+    	System.out.println(bookmarkToDelete);
+    	bookmarkRepository.delete(bookmarkToDelete);
     	//TODO add delete confirmation 
 
     }

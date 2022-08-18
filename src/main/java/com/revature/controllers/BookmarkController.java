@@ -34,7 +34,6 @@ public class BookmarkController {
 
 	@PostMapping
 	public ResponseEntity<Bookmark> bookmarkPost(@RequestBody Bookmark bodyBookmark){
-		System.out.println(bodyBookmark);
 		Bookmark bookmark= userService.bookmarkPost(bodyBookmark);
 		return new ResponseEntity<>(bookmark, HttpStatus.CREATED);
 		

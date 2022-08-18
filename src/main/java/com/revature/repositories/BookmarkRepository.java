@@ -9,6 +9,6 @@ import com.revature.models.User;
 
 public interface BookmarkRepository extends JpaRepository<Bookmark, Integer> {
 
-	public List<Bookmark> findByUserId(User user);
+	public List<Bookmark> findByUser(User user);
 	
 }

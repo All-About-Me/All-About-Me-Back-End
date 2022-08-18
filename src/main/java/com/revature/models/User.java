@@ -27,6 +27,9 @@ public class User {
     private String gender;
     //private int age;
     private String aboutMe;
+    private String city;
+    private String state;
+    private Integer postalCode;
     
 	public User(int id, String email, String password, String firstName, String lastName) {
 		super();

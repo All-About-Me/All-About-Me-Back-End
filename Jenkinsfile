@@ -30,6 +30,11 @@ pipeline {
         sh 'docker build -t aam/socialmedia:latest .'
       }
         }
+      stage('DockerRun') {
+      steps {
+        sh 'docker run -p 8080:8080 aam/socialmedia:latest'
+      }
+        }
          
   }
 }

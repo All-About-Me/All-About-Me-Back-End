@@ -7,9 +7,9 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQL82Dialect
     defer-datasource-initialization: true
   datasource:
-    url: jdbc:postgresql://aam-rds.c99du1nqfrmg.us-east-1.rds.amazonaws.com/AAM
+    url: ${RDS_EP}${RDS_DB}
     driver-class-name: org.postgresql.Driver
-    username: postgres
-    password: revature1
+    username: ${RDS_USER}
+    password: ${RDS_PASS}
   h2:
     console.enabled: false

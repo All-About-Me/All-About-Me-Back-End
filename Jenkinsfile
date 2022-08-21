@@ -32,7 +32,7 @@ pipeline {
         }
       stage('DockerRun') {
       steps {
-        sh 'docker run -p 8080:8080 aam/socialmedia:latest'
+        sh 'docker run -p 3600:3600 aam/socialmedia:latest'
       }
         }
          

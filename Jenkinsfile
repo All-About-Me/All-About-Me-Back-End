@@ -22,7 +22,7 @@ pipeline {
         }
         stage('DockerClean') {
       steps {
-        sh 'docker system prune .'
+        sh 'docker system prune --all .'
       }
         }
       stage('DockerBuild') {

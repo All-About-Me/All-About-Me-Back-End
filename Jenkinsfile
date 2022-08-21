@@ -20,7 +20,12 @@ pipeline {
         }
           }
         }
-        stage('DockerBuild') {
+        stage('DockerClean') {
+      steps {
+        sh 'docker image prune -a -f'
+      }
+        }
+      stage('DockerBuild') {
       steps {
         sh 'docker build -t aam/socialmedia:latest .'
       }

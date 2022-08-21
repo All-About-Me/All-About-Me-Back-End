@@ -23,6 +23,10 @@ public class UserService {
         this.userRepository = userRepository;
         this.bookmarkRepository =bookmarkRepository;
     }
+    
+    public Optional<User> findById(Integer id){
+    	return userRepository.findById(id);
+    }
 
     public Optional<User> findByCredentials(String email, String password) {
         return userRepository.findByEmailAndPassword(email, password);

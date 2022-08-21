@@ -5,6 +5,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +16,7 @@ import com.revature.services.UserService;
 
 @Controller
 @RequestMapping("/user")
-@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
+@CrossOrigin(origins = {"http://localhost:4200","http://aamfront-enddeploy.s3-website-us-east-1.amazonaws.com/"}, allowCredentials = "true")
 public class UserController {
 	private final UserService userService;
 	
@@ -24,6 +26,11 @@ public class UserController {
 	}
 
 
+	@GetMapping("/{id}")
+	public ResponseEntity<User> getUserById(@PathVariable(value="id") Integer id) throws Exception{
+		User user = userService.findById(id).orElseThrow(()->new Exception());
+		return ResponseEntity.ok().body(user);
+	}
 
 	@PutMapping("/update")
     public ResponseEntity<User> updateProfile(@RequestBody User user, HttpSession session){

@@ -22,7 +22,7 @@ pipeline {
         }
         stage('DockerClean') {
       steps {
-        sh 'docker image prune --a -f'
+        sh 'docker image prune -a -f'
       }
         }
       stage('DockerBuild') {

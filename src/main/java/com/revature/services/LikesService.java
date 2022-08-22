@@ -29,7 +29,7 @@ public class LikesService {
 	Optional<Post> post = postR.findById(likesRequest.getPostId());
 		
 		//create new IDCustomer method in authService
-	Optional<Likes> questionLikePostWithUser = likeR.likePostWithUser(post, authService.findByCredentials(null, null));
+//	Optional<Likes> questionLikePostWithUser = likeR.likePostWithUser(post, authService.findByCredentials(null, null));
 	
 	/* if (questionLikePostWithUser.isPresent() &&
              questionLikePostWithUser.get.)

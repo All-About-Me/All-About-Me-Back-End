@@ -10,8 +10,10 @@ import com.revature.models.User;
 
 public interface LikeRepository extends JpaRepository<Likes, Long>{
 
-Optional<Likes>	likePostWithUser(Post post, User thisUser);
+//Optional<Likes>	likePostWithUser(Post post, User thisUser);
 
-Optional<Likes> likePostWithUser(Optional<Post> post, Optional<User> findByCredentials);//delete
+Optional<Likes> findByPostAndUser(Post post, User user);
+
+//Optional<Likes> likePostWithUser(Optional<Post> post, Optional<User> findByCredentials);//delete
 	
 }

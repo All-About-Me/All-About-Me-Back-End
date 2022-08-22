@@ -22,4 +22,10 @@ public class AuthService {
     public User register(User user) {
         return userService.save(user);
     }
+   
+    /*
+    public User confirmUser() {
+    	return userService.confirmUser();
+    }
+    */
 }

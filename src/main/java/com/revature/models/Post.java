@@ -1,5 +1,6 @@
 package com.revature.models;
 
+
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -24,11 +25,12 @@ public class Post {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 	private String text;
 	private String imageUrl;
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Post> comments;
 	@ManyToOne
 	private User author;
+	
 }

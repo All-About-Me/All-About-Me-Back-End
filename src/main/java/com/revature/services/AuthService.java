@@ -4,6 +4,8 @@ import com.revature.models.User;
 import org.springframework.stereotype.Service;
 
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -30,4 +32,8 @@ public class AuthService {
     public Optional<User> findBylastName(String lastName) {
         return userService.findBylastName(lastName);
     }
+
+	public List<User> findAll() {
+		return userService.findAllUsers();
+	}
 }

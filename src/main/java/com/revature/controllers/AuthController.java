@@ -13,6 +13,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -59,16 +61,18 @@ public class AuthController {
         return ResponseEntity.status(HttpStatus.CREATED).body(authService.register(created));
     }
     
-    @Authorized
-    @GetMapping("/users/{firstName}") //mapping for search function
+    @GetMapping("/post-feed")
+    public List<User> allUsers(){
+    	return authService.findAll();
+    }
+    
+    @GetMapping("/users/{firstName}")
     public Optional<User> search(@PathVariable String firstName){
-    	System.out.println(authService.findByfirstName(firstName)); //cookie tracing
     return authService.findByfirstName(firstName);
     }
     
-    @GetMapping("/users/name/{lastName}") //mapping for search function
+    @GetMapping("/users/name/{lastName}")
     public Optional<User> searchLastName(@PathVariable String lastName){
-    	System.out.println(authService.findBylastName(lastName)); //cookie tracing
     return authService.findBylastName(lastName);
     }
     

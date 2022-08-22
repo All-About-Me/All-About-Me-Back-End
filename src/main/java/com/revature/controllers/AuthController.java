@@ -1,25 +1,33 @@
 package com.revature.controllers;
 
+import com.revature.annotations.Authorized;
 import com.revature.dtos.LoginRequest;
 import com.revature.dtos.RegisterRequest;
+import com.revature.dtos.SearchRequest;
 import com.revature.models.User;
 import com.revature.services.AuthService;
+import com.revature.services.UserService;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+
+import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/auth")
-@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
+@CrossOrigin(origins = {"http://localhost:4200","http://aamfront-enddeploy.s3-website-us-east-1.amazonaws.com/"}, allowCredentials = "true")
 public class AuthController {
 
     private final AuthService authService;
+    private final UserService userService;
 
-    public AuthController(AuthService authService) {
+    public AuthController(AuthService authService, UserService userService) {
         this.authService = authService;
+        this.userService = userService;
     }
 
     @PostMapping("/login")
@@ -52,4 +60,33 @@ public class AuthController {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(authService.register(created));
     }
-}
+    
+    @GetMapping("/post-feed")
+    public List<User> allUsers(){
+    	return authService.findAll();
+    }
+    
+    @GetMapping("/users/{firstName}")
+    public Optional<User> search(@PathVariable String firstName){
+    return authService.findByfirstName(firstName);
+    }
+    
+    @GetMapping("/users/name/{lastName}")
+    public Optional<User> searchLastName(@PathVariable String lastName){
+    return authService.findBylastName(lastName);
+    }
+    
+    @PutMapping("/resetPwd")
+    public  ResponseEntity<User> resetPassword(@RequestBody User user, HttpSession session){
+    	User u = (User) session.getAttribute("user");
+    	u.setPassword(user.getPassword());
+    	User updatedUser = userService.save(u);
+    	return ResponseEntity.ok().body(updatedUser);
+    	
+    }
+ }
+
+
+    
+
+

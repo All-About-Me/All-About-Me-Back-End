@@ -12,8 +12,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -61,20 +63,11 @@ public class AuthController {
         return ResponseEntity.status(HttpStatus.CREATED).body(authService.register(created));
     }
     
-    @GetMapping("/post-feed")
-    public List<User> allUsers(){
-    	return authService.findAll();
-    }
-    
-    @GetMapping("/users/{firstName}")
-    public Optional<User> search(@PathVariable String firstName){
-    return authService.findByfirstName(firstName);
-    }
-    
-    @GetMapping("/users/name/{lastName}")
-    public Optional<User> searchLastName(@PathVariable String lastName){
-    return authService.findBylastName(lastName);
-    }
+    @Authorized
+    @GetMapping
+    public ResponseEntity<List<User>> allUsers(){
+    	return ResponseEntity.ok(this.authService.findAll());
+    }    
     
     @PutMapping("/resetPwd")
     public  ResponseEntity<User> resetPassword(@RequestBody User user, HttpSession session){

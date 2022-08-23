@@ -4,6 +4,7 @@ import com.revature.models.Bookmark;
 import com.revature.models.Post;
 import com.revature.models.User;
 import com.revature.repositories.BookmarkRepository;
+import com.revature.repositories.PostRepository;
 import com.revature.repositories.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +18,13 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final BookmarkRepository bookmarkRepository;
+    private final PostRepository postRepository;
     
     @Autowired
-    public UserService(UserRepository userRepository, BookmarkRepository bookmarkRepository) {
+    public UserService(UserRepository userRepository, BookmarkRepository bookmarkRepository, PostRepository postRepository) {
         this.userRepository = userRepository;
         this.bookmarkRepository =bookmarkRepository;
+        this.postRepository =postRepository;
     }
     
     public Optional<User> findById(Integer id){
@@ -51,8 +54,10 @@ public class UserService {
     }
     
     public Bookmark bookmarkPost(Bookmark bookmark) {
-//    	Bookmark bookmark= new Bookmark(post, user);
-    	return bookmarkRepository.save(bookmark);
+    	Post post = postRepository.findById(bookmark.getPost().getId()).orElseThrow();
+    	User user = userRepository.findById(bookmark.getUser().getId()).orElseThrow();
+    	Bookmark savedBookmark= new Bookmark(post, user);
+    	return bookmarkRepository.save(savedBookmark);
     }
     
     public void removeBookmark(Bookmark bookmark) {

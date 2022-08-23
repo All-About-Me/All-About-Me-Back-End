@@ -1,5 +1,5 @@
 INSERT INTO users (id, email, password, first_name, last_name) VALUES (
-    1,
+    1500,
     'testuser@gmail.com',
     'password',
     'Test',

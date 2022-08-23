@@ -42,6 +42,9 @@ public class UserService {
     public Optional<User> findBylastName(String lastName) {
         return userRepository.findBylastName(lastName); //custom search based on users first name
     }
+    public List<User> findAllUsers(){
+    	return userRepository.findAll();
+    }
     
     public List<Bookmark> retrieveBookmarks(User user){
     	return bookmarkRepository.findByUser(user);
@@ -54,7 +57,6 @@ public class UserService {
     
     public void removeBookmark(Bookmark bookmark) {
     	Bookmark bookmarkToDelete=bookmarkRepository.findByUserAndPost(bookmark.getUser(), bookmark.getPost());
-    	System.out.println(bookmarkToDelete);
     	bookmarkRepository.delete(bookmarkToDelete);
     	//TODO add delete confirmation 
 

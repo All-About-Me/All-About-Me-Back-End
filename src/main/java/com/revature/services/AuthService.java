@@ -24,7 +24,7 @@ public class AuthService {
     public User register(User user) {
         return userService.save(user);
     }
-    
+   
 	public List<User> findAll() {
 		return userService.findAllUsers();
 	}

@@ -62,7 +62,7 @@ public class AuthController {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(authService.register(created));
     }
-    
+   
     @Authorized
     @GetMapping
     public ResponseEntity<List<User>> allUsers(){

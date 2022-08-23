@@ -29,12 +29,12 @@ public class Follower {
 	private User user;
 	
 	@ManyToOne
-	private User following;
+	private User follow;
 
-	public Follower(User user, User following) {
+	public Follower(User user, User follow) {
 		super();
 		this.user = user;
-		this.following = following;
+		this.follow = follow;
 	}
 	
 	

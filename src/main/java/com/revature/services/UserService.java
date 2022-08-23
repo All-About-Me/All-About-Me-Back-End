@@ -39,14 +39,8 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public Optional<User> findByfirstName(String firstName) {
-        return userRepository.findByfirstName(firstName); //custom search based on users first name
-    }
-    public Optional<User> findBylastName(String lastName) {
-        return userRepository.findBylastName(lastName); //custom search based on users first name
-    }
-    public List<User> findAllUsers(){
-    	return userRepository.findAll();
+    public List<User> findAllUsers(){ 
+    	return this.userRepository.findAll();
     }
     
     public List<Bookmark> retrieveBookmarks(User user){

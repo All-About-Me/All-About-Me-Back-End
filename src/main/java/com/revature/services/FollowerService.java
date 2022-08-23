@@ -19,9 +19,9 @@ public class FollowerService {
 		this.followerRepository = followerRepository;
 	}
 	
-//	public List<Follower> findAllFollowing(User user){
-//		return followerRepository.findAllFollowing(user);
-//	}
+	public List<Follower> findByUser(User user){
+		return followerRepository.findByUser(user);
+	}
 	
 	public Follower save(Follower follower){
 		return followerRepository.save(follower);

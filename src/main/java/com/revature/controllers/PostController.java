@@ -36,7 +36,7 @@ public class PostController {
     @GetMapping
     public ResponseEntity<List<Post>> getAllPosts() {
         HttpSession s = req.getSession();
-        System.out.println(s.getAttribute("user"));
+        System.out.println(s.getAttribute("user") + "123");
     	return ResponseEntity.ok(this.postService.getAll());
     }
     

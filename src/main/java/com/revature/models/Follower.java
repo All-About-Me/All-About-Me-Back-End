@@ -2,7 +2,6 @@ package com.revature.models;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,20 +18,24 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "posts")
-public class Post {
+@Table(name = "followers")
+public class Follower {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-	private String text;
-	private String imageUrl;
-	
-	@OneToMany(cascade = CascadeType.ALL)
-	private List<Post> comments;
 	
 	@ManyToOne
-	private User author;
+	private User user;
 	
-	private Integer likesCounter = 0;
+	@ManyToOne
+	private User follow;
+
+	public Follower(User user, User follow) {
+		super();
+		this.user = user;
+		this.follow = follow;
+	}
+	
+	
 }

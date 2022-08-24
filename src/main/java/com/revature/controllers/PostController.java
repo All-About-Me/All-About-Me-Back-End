@@ -18,6 +18,12 @@ import com.revature.models.User;
 import com.revature.services.PostService;
 import com.revature.services.UserService;
 
+import lombok.extern.slf4j.Slf4j;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+@Slf4j
 @RestController
 @RequestMapping("/post")
 @CrossOrigin(origins = {"http://localhost:4200","http://aamfront-enddeploy.s3-website-us-east-1.amazonaws.com/"}, allowCredentials = "true")
@@ -25,15 +31,19 @@ public class PostController {
 
 	private final PostService postService;
 	private final UserService userService;
+	private final HttpServletRequest req;
 
-    public PostController(PostService postService, UserService userService) {
+    public PostController(PostService postService, UserService userService, HttpServletRequest req) {
         this.postService = postService;
         this.userService = userService;
+        this.req = req;
     }
     
     @Authorized
     @GetMapping
     public ResponseEntity<List<Post>> getAllPosts() {
+        HttpSession s = req.getSession();
+        log.info(s.getAttribute("user") + "123");
     	return ResponseEntity.ok(this.postService.getAll());
     }
     

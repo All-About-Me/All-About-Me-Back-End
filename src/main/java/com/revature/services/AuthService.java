@@ -24,15 +24,7 @@ public class AuthService {
     public User register(User user) {
         return userService.save(user);
     }
-    
-    public Optional<User> findByfirstName(String firstName) {
-        return userService.findByfirstName(firstName);
-    }
-    
-    public Optional<User> findBylastName(String lastName) {
-        return userService.findBylastName(lastName);
-    }
-
+   
 	public List<User> findAll() {
 		return userService.findAllUsers();
 	}

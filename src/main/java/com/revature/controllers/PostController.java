@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.annotations.Authorized;
 import com.revature.models.Post;
+import com.revature.models.User;
 import com.revature.services.PostService;
+import com.revature.services.UserService;
 
 @RestController
 @RequestMapping("/post")
@@ -22,9 +24,11 @@ import com.revature.services.PostService;
 public class PostController {
 
 	private final PostService postService;
+	private final UserService userService;
 
-    public PostController(PostService postService) {
+    public PostController(PostService postService, UserService userService) {
         this.postService = postService;
+        this.userService = userService;
     }
     
     @Authorized
@@ -39,6 +43,10 @@ public class PostController {
     	return ResponseEntity.ok(this.postService.upsert(post));
     }
     
-    
+    @GetMapping("/followed/{id}")
+    public ResponseEntity<List<Post>> getFollowedPosts(@PathVariable(value="id") Integer id) throws Exception{
+    	User currUser = userService.findById(id).orElseThrow(()->new Exception());
+    	return ResponseEntity.ok(this.postService.getFollowedPosts(currUser));
+    }
     
 }

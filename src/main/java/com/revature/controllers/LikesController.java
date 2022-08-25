@@ -17,9 +17,9 @@ public class LikesController {
 
 	private LikesService likesService;
 	
-	@PostMapping //create new like 
-	public ResponseEntity<Void>likes(@RequestBody LikesRequest likesRequest){
-		likesService.likes(likesRequest);
-		return new ResponseEntity<>(HttpStatus.OK);
-	}
+//	@PostMapping //create new like 
+//	public ResponseEntity<Void>likes(@RequestBody LikesRequest likesRequest){
+//		likesService.likes(likesRequest);
+//		return new ResponseEntity<>(HttpStatus.OK);
+//	}
 }

@@ -26,33 +26,33 @@ public class LikesService {
 	UserRepository userR;
 	AuthService authService;
 
-	public void likes(LikesRequest likesRequest) {
-	Post post = postR.findById(likesRequest.getPostId())
-		.orElseThrow(() -> new NoPostException("401: \n NO POST WITH ID: " + likesRequest.getPostId()));
-	
-//create new IDCustomer method in authService
-	Optional<Likes> likeByPostAndUser = likeR.findByPostAndUser(post, null);
-	
-	 if (likeByPostAndUser.isPresent() &&
-             likeByPostAndUser.get().getLikeSwitch()
-             .equals(likesRequest.getLS())) {
-		 
-         throw new LSystemTalkException("You have already liked for this post");
-		}
-	 
-	/* if(LikesOn.equals(likesRequest.getLS())){
-		 
-	 }
-	 else {
-		 
-	 }*/
-	 
-	 
-	 private Likes mappingLikes (LikesRequest likeRequest, Post post) {
-		 return Likes
-	 }
-	 
-     }
+//	public void likes(LikesRequest likesRequest) {
+//	Post post = postR.findById(likesRequest.getPostId())
+//		.orElseThrow(() -> new NoPostException("401: \n NO POST WITH ID: " + likesRequest.getPostId()));
+//	
+//  //create new IDCustomer method in authService
+//	Optional<Likes> likeByPostAndUser = likeR.findByPostAndUser(post, null);
+//	
+//	 if (likeByPostAndUser.isPresent() &&
+//             likeByPostAndUser.get().getLikeSwitch()
+//             .equals(likesRequest.getLS())) {
+//		 
+//         throw new LSystemTalkException("You have already liked for this post");
+//		}
+//	 
+//	/* if(LikesOn.equals(likesRequest.getLS())){
+//		 
+//	 }
+//	 else {
+//		 
+//	 }*/
+//	 
+//	 
+//	 private Likes mappingLikes (LikesRequest likeRequest, Post post) {
+//		 return Likes
+//	 }
+//	 
+//     }
     
 	}
 

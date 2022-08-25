@@ -3,7 +3,6 @@ package com.revature.services;
 import java.util.List;
 import java.util.Optional;
 
-//import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import com.revature.exceptions.LSystemTalkException;
@@ -29,21 +28,23 @@ public class LikesService {
 		Post post = postR.findById(likes.getPostId())
 		.orElseThrow(() -> new NoPostException("401: \n NO POST WITH ID: " + likes.getPostId()));
 	
+		 
 //create new IDCustomer method in authServic
 	//Step 2: Did the user like the post ?
+
+		
 	Optional<Likes> likeByPostAndUser = likeR.findByPostAndUser(post,likes.getUser());
 	if (likeByPostAndUser.isPresent()) {
 		  throw new LSystemTalkException("You have already liked for this post");
-	}
-	}
+		  }}
+	
+	
 	
 	//Method: Add likes
 	public Likes addLikes(Likes likes) {
 	//Step 3: Create/delete a Like	
 		return likeR.save(likes);
 	}
-	
-	
 	
 	public void removeLikes(Likes likes) {
 	//Step 4: Delete like 	
@@ -60,13 +61,4 @@ public class LikesService {
 		//List<Likes> findLike = likeR.findAllbyPostAndUser(likes.getPost());
 		return likeR.findAllByPost(post);
 	}
-	
-
 }
-
-
- 
-         
-	
-	
-

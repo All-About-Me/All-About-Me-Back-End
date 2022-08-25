@@ -30,10 +30,10 @@ class UserServiceTest {
 		aUser.setLastName("Hamilton");
 
 		// Test adding the user
-		//User newUser = userService.save(aUser);
+//		User newUser = userService.save(aUser);
 
 		// Verify the addition
-		//Assertions.assertNotNull(newUser);
+//		Assertions.assertNotNull(newUser);
 		//Assertions.assertEquals("Austin", newUser.getFirstName());
 
 	}

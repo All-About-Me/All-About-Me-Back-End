@@ -38,7 +38,11 @@ public class FollowerController {
 	public Follower addFollower(@PathVariable(value="id") Integer id, @RequestBody User follow) throws Exception {
 		User currUser = userService.findById(id).orElseThrow(()->new Exception());
 		Follower follower = new Follower(currUser, follow);
-		return followerService.save(follower);
+		Optional<Follower> checkFollow = followerService.findByUserAndFollow(currUser, follow);
+		if (currUser.getId()!=follow.getId() && checkFollow.isEmpty())
+			return followerService.save(follower);
+		else
+			throw new Exception();
 	}
 	
 	@GetMapping("/{id}")

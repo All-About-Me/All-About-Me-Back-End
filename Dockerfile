@@ -1,4 +1,4 @@
-FROM amazoncorreto:8
+FROM amazoncorretto:8
 
 COPY /target/social-media-0.0.1-SNAPSHOT.jar /socialmedia.jar
 

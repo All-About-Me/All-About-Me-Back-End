@@ -34,5 +34,5 @@ public class Post {
 	@ManyToOne
 	private User author;
 	
-	
+	private Integer likesCounter = 0;
 }

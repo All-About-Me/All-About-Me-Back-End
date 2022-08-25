@@ -16,7 +16,7 @@ import com.revature.services.UserService;
 
 @Controller
 @RequestMapping("/user")
-@CrossOrigin(origins = {"http://localhost:4200","http://aamfront-enddeploy.s3-website-us-east-1.amazonaws.com/"}, allowCredentials = "true")
+@CrossOrigin(origins = {"http://localhost:4200","http://aamfront-enddeploy.s3-website-us-east-1.amazonaws.com"}, allowCredentials = "true")
 public class UserController {
 	private final UserService userService;
 	
@@ -35,16 +35,16 @@ public class UserController {
 	@PutMapping("/update")
     public ResponseEntity<User> updateProfile(@RequestBody User user, HttpSession session){
     	User u = (User) session.getAttribute("user");
-    	u.setEmail(user.getEmail());
-    	u.setFirstName(user.getFirstName());
-    	u.setLastName(user.getLastName());
-    	u.setAddress(user.getAddress());
-    	u.setPhoneNumber(user.getPhoneNumber());
-    	u.setGender(user.getGender());
-    	u.setAboutMe(user.getAboutMe());
-    	u.setCity(user.getCity());
-    	u.setState(user.getState());
-    	u.setPostalCode(user.getPostalCode());
+    	if (!user.getEmail().isEmpty()) u.setEmail(user.getEmail());
+    	if (!user.getFirstName().isEmpty()) u.setFirstName(user.getFirstName());
+    	if (!user.getLastName().isEmpty()) u.setLastName(user.getLastName());
+    	if (!user.getAddress().isEmpty()) u.setAddress(user.getAddress());
+    	if (!user.getPhoneNumber().isEmpty()) u.setPhoneNumber(user.getPhoneNumber());
+    	if (user.getGender()!=null) u.setGender(user.getGender());
+    	if (!user.getAboutMe().isEmpty()) u.setAboutMe(user.getAboutMe());
+    	if (!user.getCity().isEmpty()) u.setCity(user.getCity());
+    	if (!user.getState().isEmpty()) u.setState(user.getState());
+    	if (user.getPostalCode()!=null) u.setPostalCode(user.getPostalCode());
     	User updatedUser = userService.save(u);
     	return ResponseEntity.ok().body(updatedUser);
     	

@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.annotations.Authorized;
 import com.revature.models.Post;
+import com.revature.models.User;
 import com.revature.services.PostService;
+import com.revature.services.UserService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -22,14 +24,16 @@ import javax.servlet.http.HttpSession;
 @Slf4j
 @RestController
 @RequestMapping("/post")
-@CrossOrigin(origins = {"http://localhost:4200","http://aamfront-enddeploy.s3-website-us-east-1.amazonaws.com/"}, allowCredentials = "true")
+@CrossOrigin(origins = {"http://localhost:4200","http://aamfront-enddeploy.s3-website-us-east-1.amazonaws.com"}, allowCredentials = "true")
 public class PostController {
 
 	private final PostService postService;
-    private final HttpServletRequest req;
+	private final UserService userService;
+	private final HttpServletRequest req;
 
-    public PostController(PostService postService, HttpServletRequest req) {
+    public PostController(PostService postService, UserService userService, HttpServletRequest req) {
         this.postService = postService;
+        this.userService = userService;
         this.req = req;
     }
     
@@ -37,7 +41,7 @@ public class PostController {
     @GetMapping
     public ResponseEntity<List<Post>> getAllPosts() {
         HttpSession s = req.getSession();
-        log.info(s.getAttribute("user") + "123");
+//        log.info(s.getAttribute("user") + "123");
     	return ResponseEntity.ok(this.postService.getAll());
     }
     
@@ -47,6 +51,10 @@ public class PostController {
     	return ResponseEntity.ok(this.postService.upsert(post));
     }
     
-    
+    @GetMapping("/followed/{id}")
+    public ResponseEntity<List<Post>> getFollowedPosts(@PathVariable(value="id") Integer id) throws Exception{
+    	User currUser = userService.findById(id).orElseThrow(()->new Exception());
+    	return ResponseEntity.ok(this.postService.getFollowedPosts(currUser));
+    }
     
 }

@@ -13,4 +13,6 @@ public interface FollowerRepository extends JpaRepository<Follower, Integer> {
 	public List<Follower> findByUser(User user); //returns users being followed by logged in user
 	
 	public Optional<Follower> findByFollow(User follows);
+	
+	public Optional<Follower> findByUserAndFollow(User user, User follow);
 }

@@ -22,7 +22,7 @@ import com.revature.services.UserService;
 
 @RestController
 @RequestMapping("/follower")
-@CrossOrigin(origins = {"http://localhost:4200","http://aamfront-enddeploy.s3-website-us-east-1.amazonaws.com/"}, allowCredentials = "true")
+@CrossOrigin(origins = {"http://localhost:4200","http://aamfront-enddeploy.s3-website-us-east-1.amazonaws.com"}, allowCredentials = "true")
 public class FollowerController {
 
 	private final FollowerService followerService;

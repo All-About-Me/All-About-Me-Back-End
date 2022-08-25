@@ -21,11 +21,10 @@ class UserServiceTest {
 	@Test
 	void saveUserTest() {
 		UserRepository userRepository = null;
-		BookmarkRepository bookmarkRepository = null;
 
 
 		User aUser = new User();
-		UserService userService = new UserService(userRepository, bookmarkRepository);
+		UserService userService = new UserService(userRepository);
 		aUser.setId(100);
 		aUser.setFirstName("Austin");
 		aUser.setLastName("Hamilton");

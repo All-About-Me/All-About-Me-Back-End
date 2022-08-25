@@ -14,4 +14,6 @@ public interface BookmarkRepository extends JpaRepository<Bookmark, Integer> {
 
 	public Bookmark findByUserAndPost(User user, Post post);
 	
+	public List<Bookmark> findAllByUserAndPost(User user, Post post);
+	
 }

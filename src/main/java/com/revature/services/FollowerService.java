@@ -1,5 +1,6 @@
 package com.revature.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,8 +20,13 @@ public class FollowerService {
 		this.followerRepository = followerRepository;
 	}
 	
-	public List<Follower> findByUser(User user){
-		return followerRepository.findByUser(user);
+	public List<User> findByUser(User user){
+		List<Follower> followList =  followerRepository.findByUser(user);
+		List<User> followUsers = new ArrayList<User>();
+		for (Follower f:followList) {
+			followUsers.add(f.getFollow());
+		}
+		return followUsers;
 	}
 	
 	public Follower save(Follower follower){
@@ -30,5 +36,8 @@ public class FollowerService {
 	public void delete(Follower follower) {
 		followerRepository.delete(follower);
 	}
-
+	
+	public Optional<Follower> findByUserAndFollow(User user, User follow){
+		return followerRepository.findByUserAndFollow(user, follow);
+	}
 }

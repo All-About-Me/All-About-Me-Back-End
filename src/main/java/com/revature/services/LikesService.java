@@ -48,9 +48,9 @@ public class LikesService {
 	 }*/
 	 
 	 
-	 private Likes mappingLikes (LikesRequest likeRequest, Post post) {
-		 return Likes
-	 }
+//	 private Likes mappingLikes (LikesRequest likeRequest, Post post) {
+//		 return Likes
+//	 }
 	 
      }
     

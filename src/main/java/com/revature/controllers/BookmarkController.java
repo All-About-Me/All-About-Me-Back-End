@@ -24,7 +24,7 @@ import com.revature.services.UserService;
 
 @RestController
 @RequestMapping("/bookmarks")
-@CrossOrigin(origins = {"http://localhost:4200","http://34.235.88.178:3600"}, allowCredentials = "true")
+@CrossOrigin(origins = {"http://localhost:4200","http://34.235.88.178:4200"}, allowCredentials = "true")
 public class BookmarkController {
 	public final UserService userService;
 	public final BookmarkService bookmarkService;

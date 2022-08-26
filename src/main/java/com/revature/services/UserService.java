@@ -16,12 +16,11 @@ import java.util.Optional;
 public class UserService {
 
     private final UserRepository userRepository;
-    private final BookmarkRepository bookmarkRepository;
+
     
     @Autowired
-    public UserService(UserRepository userRepository, BookmarkRepository bookmarkRepository) {
+    public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
-        this.bookmarkRepository =bookmarkRepository;
     }
     
     public Optional<User> findById(Integer id){
@@ -40,19 +39,5 @@ public class UserService {
     	return this.userRepository.findAll();
     }
     
-    public List<Bookmark> retrieveBookmarks(User user){
-    	return bookmarkRepository.findByUser(user);
-    }
-    
-    public Bookmark bookmarkPost(Bookmark bookmark) {
-//    	Bookmark bookmark= new Bookmark(post, user);
-    	return bookmarkRepository.save(bookmark);
-    }
-    
-    public void removeBookmark(Bookmark bookmark) {
-    	Bookmark bookmarkToDelete=bookmarkRepository.findByUserAndPost(bookmark.getUser(), bookmark.getPost());
-    	bookmarkRepository.delete(bookmarkToDelete);
-    	//TODO add delete confirmation 
 
-    }
 }

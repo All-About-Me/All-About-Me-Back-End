@@ -16,7 +16,7 @@ pipeline {
 
           post {
         always {
-          archiveArtifacts 'target/*.jar', '/DockerFile'
+          archiveArtifacts 'target/*.jar', './DockerFile'
         }
           }
         }

@@ -16,7 +16,7 @@ import com.revature.services.LikesService;
 
 @RestController
 @RequestMapping("/liked")
-@CrossOrigin(origins = {"http://localhost:4200","http://aamfront-enddeploy.s3-website-us-east-1.amazonaws.com/"}, allowCredentials = "true")
+@CrossOrigin(origins = {"http://localhost:4200","http://34.235.88.178:3600"}, allowCredentials = "true")
 public class LikesController {
 
 

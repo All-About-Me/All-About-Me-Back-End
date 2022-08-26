@@ -45,10 +45,16 @@ public class FollowerController {
 			throw new Exception();
 	}
 	
-	@GetMapping("/{id}")
+	@GetMapping("/following/{id}")
 	public List<User> getFollowing(@PathVariable(value="id") Integer id) throws Exception{
 		User currUser = userService.findById(id).orElseThrow(()->new Exception());
 		return followerService.findByUser(currUser);
+	}
+	
+	@GetMapping("/followers/{id}")
+	public List<User> getFollowers(@PathVariable(value="id") Integer id) throws Exception{
+		User currUser = userService.findById(id).orElseThrow(()->new Exception());
+		return followerService.findByFollow(currUser);
 	}
 	
 	@DeleteMapping("/{id}/{fid}")

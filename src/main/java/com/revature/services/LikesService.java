@@ -17,12 +17,22 @@ import com.revature.repositories.UserRepository;
 @Service
 public class LikesService {
 
- private LikeRepository likeR;
-	PostRepository postR;
-	UserRepository userR;
+private LikeRepository likeR;
+private PostRepository postR;
+private UserRepository userR;
+
 
 	//Method: Post and like status
 	
+	public LikesService(LikeRepository likeR, PostRepository postR, UserRepository userR) {
+	super();
+	this.likeR = likeR;
+	this.postR = postR;
+	this.userR = userR;
+}
+
+
+
 	public void likes(Likes likes) {
 	//Step 1: Do we have a post? 
 		Post post = postR.findById(likes.getPostId())
@@ -33,7 +43,7 @@ public class LikesService {
 	//Step 2: Did the user like the post ?
 
 		
-	Optional<Likes> likeByPostAndUser = likeR.findByPostAndUser(post,likes.getUser());
+	Optional<Likes> likeByPostAndUser = likeR.findByUserAndPost(likes.getUser(),post);
 	if (likeByPostAndUser.isPresent()) {
 		  throw new LSystemTalkException("You have already liked for this post");
 		  }}
@@ -48,17 +58,18 @@ public class LikesService {
 	
 	public void removeLikes(Likes likes) {
 	//Step 4: Delete like 	
-		//Optional<Likes> likeDelete = likeR.findByPostAndUser(likes.getPost(),likes.getUser());
-		likeR.delete(likes);
+		List<Likes> likeDelete = likeR.findByPostAndUser(likes.getPost(),likes.getUser());
+		for(Likes likesDelete:likeDelete) {
+		likeR.delete(likesDelete);	
+		}
+		
 	}
 	
 	
 	public List <Likes> shareAllLikes(Post post) {
 	
 	//Step 5: Show all likes to post
-       // Optional <Likes> likeShow = likeR.findByPostAndUser(likes.getPost(),likes.getUser());
-       // List<Likes> groupLike =likeR.findAll(likes);
-		//List<Likes> findLike = likeR.findAllbyPostAndUser(likes.getPost());
+     
 		return likeR.findAllByPost(post);
 	}
 }

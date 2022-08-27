@@ -2,7 +2,7 @@ package com.revature.services;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -42,5 +42,7 @@ public class PostService {
 		return this.postRepository.save(post);
 	}
 	
-	
+	 public Optional<Post> findById(Integer id){
+	    	return postRepository.findById(id);
+	    }
 }

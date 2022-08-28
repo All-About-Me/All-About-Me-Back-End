@@ -1,56 +1,49 @@
 package com.revature.services;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.Assertions;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit4.SpringRunner;
-
+import org.junit.jupiter.api.extension.ExtendWith;
+import static org.mockito.BDDMockito.given;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import com.revature.models.User;
-import com.revature.repositories.BookmarkRepository;
 import com.revature.repositories.UserRepository;
-import com.revature.services.UserService;
 
+@DisplayName("JUnit Test for UserService")
+@ExtendWith(MockitoExtension.class)
+public class UserServiceTest {
 
-@DisplayName("Test UserService")
-@SpringBootTest
-class UserServiceTest {
-	@Autowired
+	@Mock
+	private UserRepository userRepository;
+
+	@InjectMocks
 	private UserService userService;
-	
-	@Test
-	@DisplayName("Integration Test Bed for UserService successfully")
-	void test() {
-		assertTrue(true);
+
+	private User user;
+
+	@BeforeEach
+	public void setup() {
+
+		user = User.builder().id(2).firstName("Jasdhir").lastName("Singh").email("test01@gmail.com")
+				.password("password01").city("Mumbai").build();
 	}
 
-	
 	@Test
-	@DisplayName("Save user successfully")
-	void saveUserTest() {
-		
-		User aUser = new User();
-		//aUser.setId(2);
-		aUser.setEmail("testuser@gmail.com");
-		aUser.setFirstName("Austin");
-		aUser.setLastName("Hamilton");
-		aUser.setPassword("password");
+	@DisplayName("Save method successfull")
+	public void givenUserObject_whenSaveUser_thenReturnUserObject() {
 
-		// Test adding the user
-		User newUser = userService.save(aUser);
+		// stubbing
+		given(userRepository.save(user)).willReturn(user);
 
-		// Verify the addition
-		assertNotNull(newUser.getEmail());
-		assertEquals("Austin", newUser.getFirstName());
+
+		User savedUser = userService.save(user);
+		Assertions.assertThat(savedUser).isNotNull();
+
+		System.out.println(savedUser);
 
 	}
-	
 
 }

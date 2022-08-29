@@ -1,40 +1,48 @@
 package com.revature.services;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.Assertions;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
+import org.junit.jupiter.api.extension.ExtendWith;
+import static org.mockito.BDDMockito.given;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import com.revature.models.User;
-import com.revature.repositories.BookmarkRepository;
 import com.revature.repositories.UserRepository;
-import com.revature.services.UserService;
 
-class UserServiceTest {
-	
-	@Test
-	void test() {
-		assertTrue(true);
+@DisplayName("JUnit Test for UserService")
+@ExtendWith(MockitoExtension.class)
+public class UserServiceTest {
 
+	@Mock
+	private UserRepository userRepository;
+
+	@InjectMocks
+	private UserService userService;
+
+	private User user;
+
+	@BeforeEach
+	public void setup() {
+
+		user = User.builder().id(2).firstName("Jasdhir").lastName("Singh").email("test01@gmail.com")
+				.password("password01").city("Mumbai").build();
 	}
 
 	@Test
-	void saveUserTest() {
-		UserRepository userRepository = null;
+	@DisplayName("Save method successfull")
+	public void givenUserObject_whenSaveUser_thenReturnUserObject() {
+
+		// stubbing
+		given(userRepository.save(user)).willReturn(user);
 
 
-		User aUser = new User();
-		UserService userService = new UserService(userRepository);
-		aUser.setId(100);
-		aUser.setFirstName("Austin");
-		aUser.setLastName("Hamilton");
+		User savedUser = userService.save(user);
+		Assertions.assertThat(savedUser).isNotNull();
 
-		// Test adding the user
-//		User newUser = userService.save(aUser);
-
-		// Verify the addition
-//		Assertions.assertNotNull(newUser);
-		//Assertions.assertEquals("Austin", newUser.getFirstName());
+		System.out.println(savedUser);
 
 	}
 

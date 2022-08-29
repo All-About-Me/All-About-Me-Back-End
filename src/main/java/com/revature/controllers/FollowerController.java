@@ -22,7 +22,7 @@ import com.revature.services.UserService;
 
 @RestController
 @RequestMapping("/follower")
-@CrossOrigin(origins = {"http://localhost:4200","http://aamfront-enddeploy.s3-website-us-east-1.amazonaws.com"}, allowCredentials = "true")
+@CrossOrigin(origins = {"http://localhost:4200","http://34.235.88.178:4200"}, allowCredentials = "true")
 public class FollowerController {
 
 	private final FollowerService followerService;
@@ -45,10 +45,16 @@ public class FollowerController {
 			throw new Exception();
 	}
 	
-	@GetMapping("/{id}")
+	@GetMapping("/following/{id}")
 	public List<User> getFollowing(@PathVariable(value="id") Integer id) throws Exception{
 		User currUser = userService.findById(id).orElseThrow(()->new Exception());
 		return followerService.findByUser(currUser);
+	}
+	
+	@GetMapping("/followers/{id}")
+	public List<User> getFollowers(@PathVariable(value="id") Integer id) throws Exception{
+		User currUser = userService.findById(id).orElseThrow(()->new Exception());
+		return followerService.findByFollow(currUser);
 	}
 	
 	@DeleteMapping("/{id}/{fid}")

@@ -28,4 +28,8 @@ public class AuthService {
 	public List<User> findAll() {
 		return userService.findAllUsers();
 	}
+	
+	public Optional <User> findUserById(Integer id) {
+		return userService.findById(id);
+	}
 }

@@ -29,6 +29,15 @@ public class FollowerService {
 		return followUsers;
 	}
 	
+	public List<User> findByFollow(User follow){
+		List<Follower> followerList = followerRepository.findByFollow(follow);
+		List<User> followers = new ArrayList<User>();
+		for (Follower f:followerList) {
+			followers.add(f.getUser());
+		}
+		return followers;
+	}
+	
 	public Follower save(Follower follower){
 		return followerRepository.save(follower);
 	}

@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "clientUrlProd",
+    "type": "java.lang.String",
+    "description": "A description for 'clientUrlProd'"
+  },
+  {
+    "name": "clientUrlDev",
+    "type": "java.lang.String",
+    "description": "A description for 'clientUrlDev'"
+  }
+]}

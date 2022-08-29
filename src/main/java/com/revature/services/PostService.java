@@ -23,7 +23,18 @@ public class PostService {
 	}
 
 	public List<Post> getAll() {
-		return this.postRepository.findAll();
+		List<Post> allPosts = this.postRepository.findAll();
+		List<Post> comments = new ArrayList<Post>();
+		List<Post> allPostsWOC = new ArrayList<Post>();
+		for (Post p:allPosts) {
+			if (!p.getComments().isEmpty())
+				comments.addAll(p.getComments());
+		}
+		for (Post p:allPosts) {
+			if (!comments.contains(p))
+				allPostsWOC.add(p);
+		}
+		return allPostsWOC;
 	}
 	
 	public List<Post> getFollowedPosts(User currUser){

@@ -9,6 +9,7 @@ import com.revature.exceptions.LSystemTalkException;
 import com.revature.exceptions.NoPostException;
 import com.revature.models.Likes;
 import com.revature.models.Post;
+import com.revature.models.User;
 import com.revature.repositories.LikeRepository;
 import com.revature.repositories.PostRepository;
 import com.revature.repositories.UserRepository;
@@ -30,30 +31,19 @@ private UserRepository userR;
 	this.postR = postR;
 	this.userR = userR;
 }
-
-
-
-	public void likes(Likes likes) {
-	//Step 1: Do we have a post? 
-		Post post = postR.findById(likes.getPostId())
-		.orElseThrow(() -> new NoPostException("401: \n NO POST WITH ID: " + likes.getPostId()));
-	
-		 
-//create new IDCustomer method in authServic
-	//Step 2: Did the user like the post ?
-
-		
-	Optional<Likes> likeByPostAndUser = likeR.findByUserAndPost(likes.getUser(),post);
-	if (likeByPostAndUser.isPresent()) {
-		  throw new LSystemTalkException("You have already liked for this post");
-		  }}
-	
 	
 	
 	//Method: Add likes
-	public Likes addLikes(Likes likes) {
+	public Likes addLikes(Likes likes) throws Exception {
 	//Step 3: Create/delete a Like	
-		return likeR.save(likes);
+
+//	Optional<Likes> likeByPostAndUser = likeR.findByUserAndPost(likes.getUser(),likes.getPost());
+		Post post = postR.findById(likes.getPost().getId()).orElseThrow(() -> new Exception(""));
+		User user =	userR.findById(likes.getUser().getId()).orElseThrow(() -> new Exception(""));	
+	Likes likesPU = new Likes(post,user); 
+		
+		return likeR.save(likesPU);
+		
 	}
 	
 	public void removeLikes(Likes likes) {
@@ -61,15 +51,15 @@ private UserRepository userR;
 		List<Likes> likeDelete = likeR.findByPostAndUser(likes.getPost(),likes.getUser());
 		for(Likes likesDelete:likeDelete) {
 		likeR.delete(likesDelete);	
-		}
-		
+		}	
 	}
-	
 	
 	public List <Likes> shareAllLikes(Post post) {
 	
 	//Step 5: Show all likes to post
-     
+  
 		return likeR.findAllByPost(post);
 	}
+	
+	
 }

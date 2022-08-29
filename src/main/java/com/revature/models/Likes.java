@@ -34,19 +34,11 @@ public class Likes {
 	    private User user;
 	    
 
-	public Integer getPostId() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public Likes(Post post, User user) {
 		super();
 		this.post = post;
 		this.user = user;
 	}
 	
-	/*public Likes findAllbyPost(Post post) {
-		return null;
-	}
-	*/
+	
 	}

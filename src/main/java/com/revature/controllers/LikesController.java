@@ -37,20 +37,20 @@ public class LikesController {
 
 
 
-	@PostMapping //create new like 
-	public ResponseEntity<Likes>addLikes(@RequestBody Likes likes){
+	@PostMapping("/likec") //create new like 
+	public ResponseEntity<Likes>addLikes(@RequestBody Likes likes) throws Exception{
 		Likes like =likesService.addLikes(likes);
 		return new ResponseEntity<>(like,HttpStatus.CREATED);
 	}
 	
-	@DeleteMapping
+	@DeleteMapping("/likedd")
 	public ResponseEntity<?> removeLikes(@RequestBody Likes likes){
 		likesService.removeLikes(likes);
 		return new ResponseEntity<>(HttpStatus.ACCEPTED);
 	}
 	
-	@GetMapping("/{id}") //read the amount of likes
-	public ResponseEntity <List<Likes>> shareAllLikes(@PathVariable Integer id) {
+	@GetMapping("/find/{id}") //read the amount of likes
+	public ResponseEntity <List<Likes>> shareAllLikes(@PathVariable("id") Integer id) {
 		Post post = postService.findById(id).orElseThrow();
 		List<Likes> likes=likesService.shareAllLikes(post);
 		return  ResponseEntity.ok().body(likes);

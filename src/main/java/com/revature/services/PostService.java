@@ -41,7 +41,7 @@ public class PostService {
 	
 	public List<Post> getFollowedPosts(User currUser){
 		List<User> followList = followerService.findByUser(currUser);
-		List<Post> allPosts = postRepository.findAll();
+		List<Post> allPosts = getAll();
 		List<Post> followedPosts = new ArrayList<Post>();
 		for (Post post:allPosts) {
 			if (followList.contains(post.getAuthor())) {

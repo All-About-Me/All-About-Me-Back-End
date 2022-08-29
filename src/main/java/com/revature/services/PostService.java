@@ -48,6 +48,7 @@ public class PostService {
 				followedPosts.add(post);
 			}
 		}
+		Collections.sort(followedPosts, Collections.reverseOrder());
 		return followedPosts;
 	}
 

@@ -1,5 +1,6 @@
 package com.revature.models;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -20,19 +21,26 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "posts")
-public class Post {
+public class Post implements Comparable<Post>{
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 	private String text;
 	private String imageUrl;
+	private Date date;
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Post> comments;
 	
 	@ManyToOne
 	private User author;
+
+	@Override
+	public int compareTo(Post p) {
+		// TODO Auto-generated method stub
+		return date.compareTo(p.date);
+	}
 	
 	
 }

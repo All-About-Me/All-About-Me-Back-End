@@ -1,6 +1,7 @@
 package com.revature.services;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,6 +35,7 @@ public class PostService {
 			if (!comments.contains(p))
 				allPostsWOC.add(p);
 		}
+		Collections.sort(allPostsWOC, Collections.reverseOrder());
 		return allPostsWOC;
 	}
 	

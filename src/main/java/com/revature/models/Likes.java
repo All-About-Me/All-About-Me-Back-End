@@ -10,6 +10,7 @@ import javax.persistence.Table;
 import static javax.persistence.FetchType.LAZY;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -19,6 +20,7 @@ import lombok.NoArgsConstructor;
 	@NoArgsConstructor
 	@Entity
 	@Data
+	@Builder
 	@Table(name ="likes")
 public class Likes {
 

@@ -63,7 +63,7 @@ public class UserServiceTest {
 	public void givenId_whenFindById_thenReturnUserOptional() {
 		
 		//stubbing
-		given(userService.findById(user.getId())).willReturn(opuser);
+		given(userRepository.findById(user.getId())).willReturn(opuser);
 		
 		Optional<User> findUser = userService.findById(user.getId());
 		Assertions.assertThat(findUser).isEqualTo(opuser);
@@ -74,7 +74,7 @@ public class UserServiceTest {
 	public void givenCredentials_whenFindByCredentials_thenReturnUserOptional() {
 		
 		//stubbing
-		given(userService.findByCredentials(user.getEmail(), user.getPassword())).willReturn(opuser);
+		given(userRepository.findByEmailAndPassword(user.getEmail(), user.getPassword())).willReturn(opuser);
 		
 		Optional<User> findUser = userService.findByCredentials(user.getEmail(), user.getPassword());
 		Assertions.assertThat(findUser).isEqualTo(opuser);
@@ -85,7 +85,7 @@ public class UserServiceTest {
 	public void whenFindAllUsers_thenReturnUserList() {
 		
 		//stubbing
-		given(userService.findAllUsers()).willReturn(lUser);
+		given(userRepository.findAll()).willReturn(lUser);
 		
 		List<User> listUser = userService.findAllUsers();
 		Assertions.assertThat(listUser).isEqualTo(lUser);

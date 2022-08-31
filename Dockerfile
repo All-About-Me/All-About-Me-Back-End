@@ -1,4 +1,4 @@
-FROM amazoncorretto:8
+FROM amazoncorretto:11-alpine-jdk
 
 COPY /target/social-media-0.0.1-SNAPSHOT.jar /socialmedia.jar
 

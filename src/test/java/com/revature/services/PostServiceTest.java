@@ -1,6 +1,7 @@
 package com.revature.services;
 
-import static org.junit.Assert.assertEquals;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 import java.time.LocalDate;
@@ -21,7 +22,7 @@ import com.revature.repositories.PostRepository;
 
 @ExtendWith(MockitoExtension.class)
 public class PostServiceTest {
-//
+
 //		@Mock
 //		private PostRepository postRepo;
 //		
